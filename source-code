@@ -1,0 +1,39 @@
+pip install googletrans==4.0.0-rc1
+
+
+from googletrans import Translator, LANGUAGES
+
+def get_supported_languages():
+    """Get a list of supported languages and their language codes."""
+    return LANGUAGES
+
+def translate_text(text, target_language):
+    """Translate text to the target language."""
+    translator = Translator()
+    translated_text = translator.translate(text, dest=target_language)
+    return translated_text.text
+
+def main():
+    print("Welcome to the Python Translator App!")
+   
+    # Display supported languages
+    supported_languages = get_supported_languages()
+    print("\nSupported languages:")
+    for code, language in supported_languages.items():
+        print(f"{code}: {language}")
+   
+    # Get user input
+    source_text = input("\nEnter the text you want to translate: ")
+    source_language = input("Enter the source language code (e.g., 'en' for English): ")
+    target_language = input("Enter the target language code (e.g., 'es' for Spanish): ")
+   
+    # Translate the text
+    translated_text = translate_text(source_text, target_language)
+   
+    # Display the translation
+    print(f"\nTranslation from {supported_languages[source_language]} to {supported_languages[target_language]}:")
+    print(translated_text)
+
+if __name__ == "__main__":
+    main()
+    
